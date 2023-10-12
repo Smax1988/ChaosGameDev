@@ -127,17 +127,17 @@ public class Chaos
     /// Gets a point that is in the middle of a triangle corner point and a given point
     /// </summary>
     /// <param name="trianglePoint">A corner point of the triangle</param>
-    /// <param name="randomPoint">Another point</param>
+    /// <param name="point">Another point</param>
     /// <returns>A point in the middle</returns>
-    private static Coordinates GetHalfLength(Coordinates trianglePoint, Coordinates randomPoint)
+    private static Coordinates GetHalfLength(Coordinates trianglePoint, Coordinates point)
     {
         Random random = new Random();
         PropertyInfo[] properties = typeof(Brushes).GetProperties();
 
         return new Coordinates
         {
-            X = (trianglePoint.X + randomPoint.X) / 2,
-            Y = (trianglePoint.Y + randomPoint.Y) / 2,
+            X = (trianglePoint.X + point.X) / 2,
+            Y = (trianglePoint.Y + point.Y) / 2,
             Color = (SolidColorBrush)properties[random.Next(properties.Length)].GetValue(null, null)!
         };
     }
