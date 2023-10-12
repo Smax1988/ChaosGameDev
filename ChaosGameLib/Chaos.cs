@@ -52,7 +52,6 @@ public class Chaos
         AddPoint(canvas, pointA);
         AddPoint(canvas, pointB);
         AddPoint(canvas, pointC);
-        AddPoint(canvas, randomStartingPoint);
 
         return new ChaosTriangle
         {
@@ -63,13 +62,23 @@ public class Chaos
         };
     }
 
+    /// <summary>
+    /// Draws a point between a random corner point of the triangle and a starting point,
+    /// then between that newly added point and another random corner point of the triangle
+    /// and repeats the process.
+    /// </summary>
+    /// <param name="canvas">WPF canvas control</param>
+    /// <param name="triangle">Equilateral triangle</param>
+    /// <param name="point">Random Point on the canvas from where to start</param>
     public static void CreateChaos(Canvas canvas, ChaosTriangle triangle, Coordinates point)
     {
         for (int i = 0; i < 200000; i++)
         {
             Coordinates randomPointOfTriangle = GetRandomPoint(triangle);
             point = GetHalfLength(randomPointOfTriangle, point);
-            AddPoint(canvas, point);
+            // Don't add first 100 points to account for points outside of the triangle
+            if (i > 100)
+                AddPoint(canvas, point);
         }
     }
 
@@ -93,6 +102,12 @@ public class Chaos
         canvas.Children.Add(newPoint);
     }
 
+
+    /// <summary>
+    /// Helper methods that gets a random corner point of the triangle
+    /// </summary>
+    /// <param name="triangle">The three coordiantes of an equilateral triangle</param>
+    /// <returns>A randomly chosen corner point of the triangle</returns>
     private static Coordinates GetRandomPoint(ChaosTriangle triangle)
     {
         Random random = new Random();
@@ -108,6 +123,12 @@ public class Chaos
         }
     }
 
+    /// <summary>
+    /// Gets a point that is in the middle of a triangle corner point and a given point
+    /// </summary>
+    /// <param name="trianglePoint">A corner point of the triangle</param>
+    /// <param name="randomPoint">Another point</param>
+    /// <returns>A point in the middle</returns>
     private static Coordinates GetHalfLength(Coordinates trianglePoint, Coordinates randomPoint)
     {
         Random random = new Random();
