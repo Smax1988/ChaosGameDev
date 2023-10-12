@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChaosGameLib;
+using ChaosGameLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,16 @@ namespace ChaosGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Triangle triangle = new Triangle();
         public MainWindow()
         {
             InitializeComponent();
+            triangle.AddPoint(ChaosGameCanvas, new Coordinates { X = 100, Y = 100 });
+            triangle.CreateInitialTriangle(ChaosGameCanvas);
         }
 
-        //ChaosGame.Start();
+
+
+        
     }
 }
