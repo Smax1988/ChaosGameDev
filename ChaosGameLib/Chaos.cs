@@ -75,7 +75,7 @@ public class Chaos
         for (int i = 0; i < 200000; i++)
         {
             Coordinates randomPointOfTriangle = GetRandomPoint(triangle);
-            point = GetHalfLength(randomPointOfTriangle, point);
+            point = CreateMiddlePoint(randomPointOfTriangle, point);
             // Don't add first 100 points to account for points outside of the triangle
             if (i > 100)
                 AddPoint(canvas, point);
@@ -124,21 +124,28 @@ public class Chaos
     }
 
     /// <summary>
-    /// Gets a point that is in the middle of a triangle corner point and a given point
+    /// Creates a point that is in the middle of a triangle corner point and a given point
     /// </summary>
     /// <param name="trianglePoint">A corner point of the triangle</param>
     /// <param name="point">Another point</param>
-    /// <returns>A point in the middle</returns>
-    private static Coordinates GetHalfLength(Coordinates trianglePoint, Coordinates point)
+    /// <param name="useRandomColors">Option to change color of a point to a random color. Defauol is false</param>
+    /// <returns>The point in the middle</returns>
+    private static Coordinates CreateMiddlePoint(Coordinates trianglePoint, Coordinates point, bool useRandomColors = false)
     {
-        Random random = new Random();
-        PropertyInfo[] properties = typeof(Brushes).GetProperties();
+        SolidColorBrush color = Brushes.Red;
+
+        if (useRandomColors)
+        {
+            Random random = new Random();
+            PropertyInfo[] properties = typeof(Brushes).GetProperties();
+            color = (SolidColorBrush)properties[random.Next(properties.Length)].GetValue(null, null)!;
+        }
 
         return new Coordinates
         {
             X = (trianglePoint.X + point.X) / 2,
             Y = (trianglePoint.Y + point.Y) / 2,
-            Color = (SolidColorBrush)properties[random.Next(properties.Length)].GetValue(null, null)!
+            Color =  color
         };
     }
 }

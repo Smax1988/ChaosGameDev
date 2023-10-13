@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChaosGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1000">
+        Title="MainWindow" Height="900" Width="1000"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Canvas Name="ChaosGameCanvas" Background="Black" Loaded="OnLoad"></Canvas>
     </Grid>
