@@ -19,7 +19,7 @@ public class Chaos
     {
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
-        int triangleLength = canvasWidth - 100; // Spacing from left and right of 50;
+        int triangleLength = canvasWidth - 100; // Spacing of 50 from left and right of the screen;
         Random random = new Random();
 
         // Left corner point A
