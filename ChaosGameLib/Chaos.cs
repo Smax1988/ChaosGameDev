@@ -13,7 +13,7 @@ public class Chaos
     ///  Creates the initial equilateral triangle and the first random point
     /// Canvas: Point (0,0) is top left, Point (width, height) is bottom right.
     /// </summary>
-    /// <param name="canvas">WPF Canvas Control</param>
+    /// <param name="canvas">WPF Canvas Control. This is where the magic happens</param>
     /// <returns>The Created Triangle with all of its Points and the random generated starting point</returns>
     public static ChaosTriangle CreateTriangle(Canvas canvas)
     {
