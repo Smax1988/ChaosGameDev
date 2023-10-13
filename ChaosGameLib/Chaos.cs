@@ -19,47 +19,42 @@ public class Chaos
     {
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
-        int triangleLength = canvasWidth - 100;
+        int triangleLength = canvasWidth - 100; // Spacing from left and right of 50;
         Random random = new Random();
 
-        Coordinates pointA = new Coordinates
-        {
-            X = 50,
-            Y = canvasHeight - 50
-        };
-        
-        Coordinates pointB = new Coordinates
-        {
-            X = canvasWidth - 50,
-            Y = canvasHeight - 50
-        };
+        // Left corner point A
+        Coordinates pointA = new Coordinates();
+        pointA.X = 50;
+        pointA.Y = canvasHeight - 50;
 
-        Coordinates pointC = new Coordinates
-        {   
-            
-            X = canvasWidth / 2,
-            // Get height of equilateral triangle: Pythagoras
-            Y = canvasHeight - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2))
-        };
+        // Right corner point B
+        Coordinates pointB = new Coordinates();
+        pointB.X = canvasWidth - 50;
+        pointB.Y = canvasHeight - 50;
+
+        // Top corner point C
+        Coordinates pointC = new Coordinates();
+        pointC.X = canvasWidth / 2;
+        // Get height of equilateral triangle: Pythagoras
+        pointC.Y = canvasHeight - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
 
         // Random Starting Point
-        Coordinates randomStartingPoint = new Coordinates
-        {
-            X = random.Next(0, canvasWidth),
-            Y = random.Next(0, canvasHeight),
-        };
+        Coordinates randomStartingPoint = new Coordinates();
+        randomStartingPoint.X = random.Next(0, canvasWidth);
+        randomStartingPoint.Y = random.Next(0, canvasHeight);
 
         AddPoint(canvas, pointA);
         AddPoint(canvas, pointB);
         AddPoint(canvas, pointC);
 
-        return new ChaosTriangle
-        {
-            PointA = pointA,
-            PointB = pointB,
-            PointC = pointC,
-            RandomStartingPoint = randomStartingPoint
-        };
+        // Create triangle and fill with corner points and random starting point
+        ChaosTriangle triangle = new ChaosTriangle();
+        triangle.PointA = pointA;
+        triangle.PointB = pointB;
+        triangle.PointC = pointC;
+        triangle.RandomStartingPoint = randomStartingPoint;
+
+        return triangle;
     }
 
     /// <summary>
