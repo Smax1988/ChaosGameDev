@@ -76,7 +76,7 @@ public class Chaos
         {
             Coordinates randomPointOfTriangle = GetRandomPoint(triangle);
             point = CreateMiddlePoint(randomPointOfTriangle, point);
-            // Don't add first 100 points to account for points outside of the triangle
+            // Don't add first 100 points to account for some points in the beginning being outside of the triangle
             if (i > 100)
                 AddPoint(canvas, point);
         }
