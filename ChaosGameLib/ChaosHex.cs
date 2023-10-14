@@ -33,17 +33,17 @@ public class ChaosHex : ChaosBase
         int bitmapWidth = bitmap.Width;
         int bitmapHeight = bitmap.Height;
         int centerLeftRight = bitmapWidth / 2; // Center of the bitmap horizontally
-        int centerTopBottom = bitmapHeight / 2; // Center of the bitmap vertically
-        int sideLength = 300;
+        int centerTopBottom = bitmapHeight / 2 - 50; // Center of the bitmap vertically
+        int sideLength = 400;
         Random random = new Random();
 
         // Calculate the corner points of the hexagon
-        Coordinates pointA = new Coordinates (centerLeftRight, centerTopBottom - sideLength, color);
-        Coordinates pointB = new Coordinates (centerLeftRight + (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2, color);
-        Coordinates pointC = new Coordinates (centerLeftRight + (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2, color);
-        Coordinates pointD = new Coordinates (centerLeftRight, centerTopBottom + sideLength, color);
-        Coordinates pointE = new Coordinates (centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2, color);
-        Coordinates pointF = new Coordinates (centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2, color);
+        Coordinates pointA = new Coordinates(centerLeftRight, centerTopBottom - sideLength, color);
+        Coordinates pointB = new Coordinates(centerLeftRight + (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2, color);
+        Coordinates pointC = new Coordinates(centerLeftRight + (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2, color);
+        Coordinates pointD = new Coordinates(centerLeftRight, centerTopBottom + sideLength, color);
+        Coordinates pointE = new Coordinates(centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2, color);
+        Coordinates pointF = new Coordinates(centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2, color);
         // Random Starting Point
 
         Hexagon hexagon = new Hexagon();

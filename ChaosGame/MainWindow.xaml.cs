@@ -1,9 +1,12 @@
 ﻿using ChaosGameLib;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ChaosGame;
@@ -17,6 +20,35 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+
+    private void Triangle_Click(object sender, RoutedEventArgs e)
+    {
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        Bitmap image = ChaosTriangle.CreateChaosTriangle(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        SetImage(image);
+    }
+
+    private void Square_Click(object sender, RoutedEventArgs e)
+    {
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        Bitmap image = ChaosSquare.CreateChaosSquare(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        SetImage(image);
+    }
+
+    private void Hexagon_Click(object sender, RoutedEventArgs e)
+    {
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        Bitmap image = ChaosHex.CreateChaosHex(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        SetImage(image);
+    }
+
 
     private void SetImage(Bitmap image)
     {
@@ -32,30 +64,79 @@ public partial class MainWindow : Window
         ChaosImage.Source = bitmapImage;
     }
 
-    private void Triangle_Click(object sender, RoutedEventArgs e)
+    // CHANGE COLOR
+    private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var menuItem = (MenuItem)sender;
-        string? iterations = menuItem.Tag as string;
+        if (ChaosImage == null || ChaosImage.Source == null) return;
 
-        Bitmap image = ChaosTriangle.CreateChaosTriangle(int.Parse(iterations!), Color.Cyan);
-        SetImage(image);
+        string? color = ((ComboBoxItem)colorComboBox.SelectedItem).Content.ToString();
+        if (Enum.TryParse(color, out KnownColor knownColor))
+        {
+            System.Drawing.Color newColor = System.Drawing.Color.FromKnownColor(knownColor);
+            BitmapSource bitmapSource = (BitmapSource)ChaosImage.Source;
+
+            FormatConvertedBitmap newFormatedBitmapSource = new FormatConvertedBitmap();
+            newFormatedBitmapSource.BeginInit();
+            newFormatedBitmapSource.Source = bitmapSource;
+            newFormatedBitmapSource.DestinationFormat = PixelFormats.Bgra32;
+            newFormatedBitmapSource.EndInit();
+
+            int stride = newFormatedBitmapSource.PixelWidth * (newFormatedBitmapSource.Format.BitsPerPixel / 8);
+            int size = newFormatedBitmapSource.PixelHeight * stride;
+            byte[] pixelByteArray = new byte[size];
+            newFormatedBitmapSource.CopyPixels(pixelByteArray, stride, 0);
+
+            for (int i = 0; i < pixelByteArray.Length; i += 4)
+            {
+                if (pixelByteArray[i] != 0 || pixelByteArray[i + 1] != 0 || pixelByteArray[i + 2] != 0) // Check if the pixel is not black
+                {
+                    pixelByteArray[i] = newColor.B;
+                    pixelByteArray[i + 1] = newColor.G;
+                    pixelByteArray[i + 2] = newColor.R;
+                }
+            }
+
+            WriteableBitmap writeableBitmap = new WriteableBitmap(newFormatedBitmapSource.PixelWidth, newFormatedBitmapSource.PixelHeight, newFormatedBitmapSource.DpiX, newFormatedBitmapSource.DpiY, PixelFormats.Bgra32, null);
+            writeableBitmap.WritePixels(new Int32Rect(0, 0, newFormatedBitmapSource.PixelWidth, newFormatedBitmapSource.PixelHeight), pixelByteArray, stride, 0);
+            ChaosImage.Source = writeableBitmap;
+        }
     }
 
-    private void Square_Click(object sender, RoutedEventArgs e)
-    {
-        var menuItem = (MenuItem)sender;
-        string? iterations = menuItem.Tag as string;
+    // ZOOMING
+    private double scaleFactor = 1.0;
+    private double scaleIncrement = 0.2;
+    private double minScale = 1.0;
 
-        Bitmap image = ChaosSquare.CreateChaosSquare(int.Parse(iterations!), Color.Cyan);
-        SetImage(image);
+    private void Image_MouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        if (ChaosImage.Source == null) return; // Check if there is an image loaded
+
+        if (e.Delta > 0) // Zoom in
+        {
+            scaleFactor += scaleIncrement;
+        }
+        else // Zoom out
+        {
+            if (scaleFactor > minScale) // Limit the minimum zoom level
+            {
+                scaleFactor -= scaleIncrement;
+            }
+        }
+
+        ScaleImage();
     }
 
-    private void Hexagon_Click(object sender, RoutedEventArgs e)
+    private void ScaleImage()
     {
-        var menuItem = (MenuItem)sender;
-        string? iterations = menuItem.Tag as string;
-
-        Bitmap image = ChaosHex.CreateChaosHex(int.Parse(iterations!), Color.Cyan);
-        SetImage(image);
+        if (ChaosImage.LayoutTransform is ScaleTransform scaleTransform)
+        {
+            scaleTransform.ScaleX = scaleFactor;
+            scaleTransform.ScaleY = scaleFactor;
+        }
+        else
+        {
+            ScaleTransform newTransform = new ScaleTransform(scaleFactor, scaleFactor);
+            ChaosImage.LayoutTransform = newTransform;
+        }
     }
 }

@@ -16,9 +16,7 @@ public abstract class ChaosBase
     {
         // Make sure the coordinates are within the bounds of the bitmap
         if (point.X < 0 || point.Y < 0 || point.X >= bitmap.Width || point.Y >= bitmap.Height)
-        {
             throw new ArgumentOutOfRangeException("Coordinates are outside the bounds of the bitmap.");
-        }
 
         // Set the color of the pixel at the specified coordinates
         bitmap.SetPixel(point.X, point.Y, point.Color);

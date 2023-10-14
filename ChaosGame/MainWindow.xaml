@@ -42,14 +42,13 @@
                 </MenuItem>
             </MenuItem>
             <!-- Color Dropdown -->
-            <ComboBox Text="Color"  Width="120">
-                <ComboBoxItem>Red</ComboBoxItem>
-                <ComboBoxItem>Green</ComboBoxItem>
-                <ComboBoxItem>Blue</ComboBoxItem>
-                <ComboBoxItem>Yellow</ComboBoxItem>
+            <ComboBox x:Name="colorComboBox" Width="120" SelectionChanged="ColorComboBox_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Cyan</ComboBoxItem>
+                <ComboBoxItem>White</ComboBoxItem>
+                <ComboBoxItem>Magenta</ComboBoxItem>
+                <ComboBoxItem>GreenYellow</ComboBoxItem>
                 <ComboBoxItem>Orange</ComboBoxItem>
-                <ComboBoxItem>Purple</ComboBoxItem>
-                <!-- Add more colors as needed -->
+                <ComboBoxItem>Red</ComboBoxItem>
             </ComboBox>
         </Menu>
 
@@ -59,8 +58,8 @@
             </StackPanel>
         </StatusBar>
 
-        <Grid Name="canvasParent">
-            <Image x:Name="ChaosImage" Stretch="None" />
+        <Grid Name="canvasParent" >
+            <Image x:Name="ChaosImage" Stretch="None" MouseWheel="Image_MouseWheel"/>
         </Grid>
     </DockPanel>
 </Window>

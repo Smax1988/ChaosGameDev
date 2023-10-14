@@ -6,7 +6,7 @@ public class Coordinates
 {
     public int X { get; set; }
     public int Y { get; set; }
-    public Color Color { get; set; } = Color.White;
+    public Color Color { get; set; } = Color.Cyan;
 
     public Coordinates() {}
 
