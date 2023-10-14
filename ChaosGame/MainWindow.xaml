@@ -10,6 +10,6 @@
         WindowStartupLocation="CenterScreen">
     
     <Grid>
-        <Canvas Name="ChaosGameCanvas" Background="Black" Loaded="OnLoad"></Canvas>
+        <Canvas Name="ChaosGameCanvas" Background="White" Loaded="OnLoad"></Canvas>
     </Grid>
 </Window>

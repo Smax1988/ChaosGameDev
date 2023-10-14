@@ -29,7 +29,6 @@ public abstract class ChaosBase
         canvas.Children.Add(newPoint);
     }
 
-
     /// <summary>
     /// Helper methods that gets a random corner point of the triangle
     /// </summary>
@@ -47,6 +46,28 @@ public abstract class ChaosBase
                 return triangle.PointB;
             default:
                 return triangle.PointC;
+        }
+    }
+
+    /// <summary>
+    /// Helper methods that gets a random corner point of the square
+    /// </summary>
+    /// <param name="square">The three coordiantes of square</param>
+    /// <returns>A randomly chosen corner point of the square</returns>
+    protected static Coordinates GetRandomPoint(Square square)
+    {
+        Random random = new Random();
+        int randomNumber = random.Next(1, 5); // min is included, max is excluded
+        switch (randomNumber)
+        {
+            case 1:
+                return square.PointA;
+            case 2:
+                return square.PointB;
+            case 3:
+                return square.PointC;
+            default:
+                return square.PointD;
         }
     }
 

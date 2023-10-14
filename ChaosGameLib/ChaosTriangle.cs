@@ -16,24 +16,26 @@ public class ChaosTriangle : ChaosBase
     {
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
-        int triangleLength = canvasWidth - 200; // Spacing of 100 from left and right of the screen;
+        int marginLeftRight = 100; // Spacing from left and right of the screen;
+        int marginBottom = 50; // spacing from bottom
+        int triangleLength = canvasWidth - marginLeftRight * 2; // length of each side of the triangle
         Random random = new Random();
 
         // Bottom left corner point A
         Coordinates pointA = new Coordinates();
-        pointA.X = 100;
-        pointA.Y = canvasHeight - 100;
+        pointA.X = marginLeftRight;
+        pointA.Y = canvasHeight - marginBottom;
 
         // Bottom right corner point B
         Coordinates pointB = new Coordinates();
-        pointB.X = canvasWidth - 100;
-        pointB.Y = canvasHeight - 100;
+        pointB.X = canvasWidth - marginLeftRight;
+        pointB.Y = canvasHeight - marginBottom;
 
         // Top corner point C
         Coordinates pointC = new Coordinates();
         pointC.X = canvasWidth / 2;
         // Get height of equilateral triangle: Pythagoras
-        pointC.Y = canvasHeight - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
+        pointC.Y = canvasHeight - marginBottom - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
 
         // Random Starting Point
         Coordinates randomStartingPoint = new Coordinates();
@@ -67,8 +69,7 @@ public class ChaosTriangle : ChaosBase
 
         for (int i = 0; i < 200000; i++)
         {
-            Coordinates randomPointOfTriangle = GetRandomPoint(triangle);
-            point = CreateMiddlePoint(randomPointOfTriangle, point);
+            point = CreateMiddlePoint(GetRandomPoint(triangle), point);
             // Don't add first 100 points to account for some points in the beginning being outside of the triangle
             if (i > 100)
                 AddPoint(canvas, point);
