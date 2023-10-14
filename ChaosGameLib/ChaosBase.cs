@@ -14,11 +14,10 @@ public abstract class ChaosBase
     // Define a function to add a point to a bitmap
     protected static void AddPoint(Bitmap bitmap, Coordinates point)
     {
-        // Make sure the coordinates are within the bounds of the bitmap
+        // Coordinates need to be greater than 0 and smaller than image size
         if (point.X < 0 || point.Y < 0 || point.X >= bitmap.Width || point.Y >= bitmap.Height)
             throw new ArgumentOutOfRangeException("Coordinates are outside the bounds of the bitmap.");
 
-        // Set the color of the pixel at the specified coordinates
         bitmap.SetPixel(point.X, point.Y, point.Color);
     }
 
