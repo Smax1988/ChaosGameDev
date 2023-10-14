@@ -1,7 +1,6 @@
 ﻿using ChaosGameLib.Models;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+using System;
+using System.Drawing;
 
 namespace ChaosGameLib;
 
@@ -12,33 +11,32 @@ public abstract class ChaosBase
     /// </summary>
     /// <param name="canvas">WPF Canvas</param>
     /// <param name="coordinates">X and Y Coordinates of the point and the color</param>
-    protected static void AddPoint(Canvas canvas, Coordinates coordinates)
+    // Define a function to add a point to a bitmap
+    protected static void AddPoint(Bitmap bitmap, Coordinates point)
     {
-        Ellipse newPoint = new Ellipse
+        // Make sure the coordinates are within the bounds of the bitmap
+        if (point.X < 0 || point.Y < 0 || point.X >= bitmap.Width || point.Y >= bitmap.Height)
         {
-            Width = 1,
-            Height = 1,
-            Fill = coordinates.Color
-        };
+            throw new ArgumentOutOfRangeException("Coordinates are outside the bounds of the bitmap.");
+        }
 
-        Canvas.SetLeft(newPoint, coordinates.X);
-        Canvas.SetTop(newPoint, coordinates.Y);
-
-        canvas.Children.Add(newPoint);
+        // Set the color of the pixel at the specified coordinates
+        bitmap.SetPixel(point.X, point.Y, point.Color);
     }
 
     /// <summary>
     /// Creates a point that is in the middle of two given points
     /// </summary>
-    /// <param name="poinA">One Point</param>
+    /// <param name="pointA">One Point</param>
     /// <param name="pointB">Another point</param>
     /// <returns>The point in the middle</returns>
-    protected static Coordinates CreateMiddlePoint(Coordinates poinA, Coordinates pointB)
+    protected static Coordinates CreateMiddlePoint(Coordinates pointA, Coordinates pointB)
     {
         return new Coordinates
         {
-            X = (poinA.X + pointB.X) / 2,
-            Y = (poinA.Y + pointB.Y) / 2,
+            X = (pointA.X + pointB.X) / 2,
+            Y = (pointA.Y + pointB.Y) / 2,
+            Color = pointA.Color
         };
     }
 }

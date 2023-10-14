@@ -1,7 +1,10 @@
 ﻿using ChaosGameLib;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGame;
 
@@ -15,46 +18,44 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+    private void SetImage(Bitmap image)
+    {
+        using MemoryStream memory = new MemoryStream();
+        image.Save(memory, ImageFormat.Bmp);
+        memory.Position = 0;
+        BitmapImage bitmapImage = new BitmapImage();
+        bitmapImage.BeginInit();
+        bitmapImage.StreamSource = memory;
+        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        bitmapImage.EndInit();
+
+        ChaosImage.Source = bitmapImage;
+    }
+
     private void Triangle_Click(object sender, RoutedEventArgs e)
     {
-        ChaosGameCanvas.Children.Clear();
-
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas, int.Parse(iterations!));
+        Bitmap image = ChaosTriangle.CreateChaosTriangle(int.Parse(iterations!), Color.Cyan);
+        SetImage(image);
     }
 
     private void Square_Click(object sender, RoutedEventArgs e)
     {
-        ChaosGameCanvas.Children.Clear();
-
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosSquare.CreateChaosSquare(ChaosGameCanvas, int.Parse(iterations!));
+        Bitmap image = ChaosSquare.CreateChaosSquare(int.Parse(iterations!), Color.Cyan);
+        SetImage(image);
     }
 
     private void Hexagon_Click(object sender, RoutedEventArgs e)
     {
-        ChaosGameCanvas.Children.Clear();
-
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosHex.CreateChaosHex(ChaosGameCanvas, int.Parse(iterations!));
-    }
-
-    private void Clear_Click(object sender, RoutedEventArgs e)
-    {
-        //canvasParent.Children.Remove(ChaosGameCanvas);
-
-        //Canvas newCanvas = new Canvas
-        //{
-        //    Name = "ChaosGameCanvas",
-        //    Background = new SolidColorBrush(Colors.Black)
-        //};
-
-        //canvasParent.Children.Add(newCanvas);
+        Bitmap image = ChaosHex.CreateChaosHex(int.Parse(iterations!), Color.Cyan);
+        SetImage(image);
     }
 }

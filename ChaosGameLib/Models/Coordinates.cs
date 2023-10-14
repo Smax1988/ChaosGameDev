@@ -1,4 +1,4 @@
-﻿using System.Windows.Media;
+﻿using System.Drawing;
 
 namespace ChaosGameLib.Models;
 
@@ -6,7 +6,7 @@ public class Coordinates
 {
     public int X { get; set; }
     public int Y { get; set; }
-    public SolidColorBrush Color { get; set; } = Brushes.Cyan;
+    public Color Color { get; set; } = Color.White;
 
     public Coordinates() {}
 
@@ -14,5 +14,12 @@ public class Coordinates
     {
         X = x;
         Y = y;
+    }
+
+    public Coordinates(int x, int y, Color color)
+    {
+        X = x;
+        Y = y;
+        Color = color;
     }
 }

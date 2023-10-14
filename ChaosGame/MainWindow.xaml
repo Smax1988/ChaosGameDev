@@ -16,26 +16,41 @@
                 <!-- Triangle -->
                 <MenuItem Header="Triangle">
                     <!-- Iterations -->
-                    <MenuItem Click="Triangle_Click" Header=" 10.000 Iterations" Tag="10000" />
-                    <MenuItem Click="Triangle_Click" Header="100.000 Iterations" Tag="100000" />
-                    <MenuItem Click="Triangle_Click" Header="200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Triangle_Click" Header="    3.000 Iterations" Tag="3000" />
+                    <MenuItem Click="Triangle_Click" Header="   10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Triangle_Click" Header="  100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Triangle_Click" Header="  200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Triangle_Click" Header="1.000.000 Iterations" Tag="1000000" />
                 </MenuItem>
                 <!-- Square -->
                 <MenuItem Header="Square" >
                     <!-- Iterations -->
-                    <MenuItem Click="Square_Click" Header=" 10.000 Iterations" Tag="10000" />
-                    <MenuItem Click="Square_Click" Header="100.000 Iterations" Tag="100000" />
-                    <MenuItem Click="Square_Click" Header="200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Square_Click" Header="    3.000 Iterations" Tag="3000" />
+                    <MenuItem Click="Square_Click" Header="   10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Square_Click" Header="  100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Square_Click" Header="  200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Square_Click" Header="1.000.000 Iterations" Tag="1000000" />
                 </MenuItem>
                 <!-- Hexagon -->
                 <MenuItem Header="Hexagon" >
                     <!-- Iterations -->
-                    <MenuItem Click="Hexagon_Click" Header=" 10.000 Iterations" Tag="10000" />
-                    <MenuItem Click="Hexagon_Click" Header="100.000 Iterations" Tag="100000" />
-                    <MenuItem Click="Hexagon_Click" Header="200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Hexagon_Click" Header="    3.000 Iterations" Tag="3000" />
+                    <MenuItem Click="Hexagon_Click" Header="   10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Hexagon_Click" Header="  100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Hexagon_Click" Header="  200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Hexagon_Click" Header="1.000.000 Iterations" Tag="1000000" />
                 </MenuItem>
             </MenuItem>
-            <MenuItem Click="Clear_Click" Header="Clear" />
+            <!-- Color Dropdown -->
+            <ComboBox Text="Color"  Width="120">
+                <ComboBoxItem>Red</ComboBoxItem>
+                <ComboBoxItem>Green</ComboBoxItem>
+                <ComboBoxItem>Blue</ComboBoxItem>
+                <ComboBoxItem>Yellow</ComboBoxItem>
+                <ComboBoxItem>Orange</ComboBoxItem>
+                <ComboBoxItem>Purple</ComboBoxItem>
+                <!-- Add more colors as needed -->
+            </ComboBox>
         </Menu>
 
         <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" >
@@ -45,7 +60,7 @@
         </StatusBar>
 
         <Grid Name="canvasParent">
-            <Canvas Name="ChaosGameCanvas" Background="Black"></Canvas>
+            <Image x:Name="ChaosImage" Stretch="None" />
         </Grid>
     </DockPanel>
 </Window>

@@ -1,40 +1,21 @@
 ﻿using ChaosGameLib.Models;
 using System;
-using System.Windows.Controls;
+using System.Drawing;
 
 namespace ChaosGameLib;
 
 public class ChaosSquare : ChaosBase
 {
-    private static Square CreateSquare(Canvas canvas)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="iterations"></param>
+    /// <returns></returns>
+    public static Bitmap CreateChaosSquare(int iterations, Color color)
     {
-        int canvasWidth = (int)canvas.ActualWidth;
-        int canvasHeight = (int)canvas.ActualHeight;
-        int marginLeftRight = 150; // Spacing from left and right of the screen;
-        int marginBottom = 20; // spacing from bottom
-        int sideLength = canvasWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
-        Random random = new Random();
-
-        Coordinates pointA = new Coordinates(marginLeftRight, canvasHeight - marginBottom);
-        Coordinates pointB = new Coordinates(canvasWidth - marginLeftRight, canvasHeight - marginBottom);
-        Coordinates pointD = new Coordinates(marginLeftRight, canvasHeight - marginBottom - sideLength);
-        Coordinates pointC = new Coordinates(marginLeftRight + sideLength, canvasHeight - marginBottom - sideLength);
-
-        // Create square and fill with corner points and random starting point
-        Square square = new Square();
-        square.PointA = pointA;
-        square.PointB = pointB;
-        square.PointC = pointC;
-        square.PointD = pointD;
-        square.RandomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
-
-        return square;
-    }
-
-    public static void CreateChaosSquare(Canvas canvas, int iterations)
-    {
+        Bitmap bitmap = new Bitmap(1000, 800);
         Coordinates LastCornerPoint = new Coordinates();
-        Square square = CreateSquare(canvas);
+        Square square = CreateSquare(bitmap, color);
         Coordinates point = square.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
@@ -46,9 +27,40 @@ public class ChaosSquare : ChaosBase
                 LastCornerPoint = randomCornerPoint;
 
                 if (i > 100)
-                    AddPoint(canvas, point);
+                    AddPoint(bitmap, point);
             }
         }
+        return bitmap;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="bitmap"></param>
+    /// <returns></returns>
+    private static Square CreateSquare(Bitmap bitmap, Color color)
+    {
+        int bitmapWidth = bitmap.Width;
+        int bitmapHeight = bitmap.Height;
+        int marginLeftRight = 150; // Spacing from left and right of the screen;
+        int marginBottom = 95; // spacing from bottom
+        int sideLength = bitmapWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
+        Random random = new Random();
+
+        Coordinates pointA = new Coordinates(marginLeftRight, bitmapHeight - marginBottom, color);
+        Coordinates pointB = new Coordinates(bitmapWidth - marginLeftRight, bitmapHeight - marginBottom, color);
+        Coordinates pointD = new Coordinates(marginLeftRight, bitmapHeight - marginBottom - sideLength, color);
+        Coordinates pointC = new Coordinates(marginLeftRight + sideLength, bitmapHeight - marginBottom - sideLength, color);
+
+        // Create square and fill with corner points and random starting point
+        Square square = new Square();
+        square.PointA = pointA;
+        square.PointB = pointB;
+        square.PointC = pointC;
+        square.PointD = pointD;
+        square.RandomStartingPoint = new Coordinates(random.Next(0, bitmapWidth), random.Next(0, bitmapHeight), color);
+
+        return square;
     }
 
     /// <summary>

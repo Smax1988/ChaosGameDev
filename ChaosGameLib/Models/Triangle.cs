@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace ChaosGameLib.Models;
+﻿namespace ChaosGameLib.Models;
 
 public class Triangle: ShapeBase
 {
