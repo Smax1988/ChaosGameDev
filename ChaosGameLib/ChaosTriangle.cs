@@ -16,15 +16,15 @@ public class ChaosTriangle : ChaosBase
     {
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
-        int triangleLength = canvasWidth - 200; // Spacing of 50 from left and right of the screen;
+        int triangleLength = canvasWidth - 200; // Spacing of 100 from left and right of the screen;
         Random random = new Random();
 
-        // Left corner point A
+        // Bottom left corner point A
         Coordinates pointA = new Coordinates();
         pointA.X = 100;
         pointA.Y = canvasHeight - 100;
 
-        // Right corner point B
+        // Bottom right corner point B
         Coordinates pointB = new Coordinates();
         pointB.X = canvasWidth - 100;
         pointB.Y = canvasHeight - 100;
@@ -45,7 +45,7 @@ public class ChaosTriangle : ChaosBase
         AddPoint(canvas, pointC);
 
         // Create triangle and fill with corner points and random starting point
-        Triangle triangle = new Models.Triangle();
+        Triangle triangle = new Triangle();
         triangle.PointA = pointA;
         triangle.PointB = pointB;
         triangle.PointC = pointC;

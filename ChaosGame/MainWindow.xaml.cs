@@ -21,6 +21,7 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void OnLoad(object sender, RoutedEventArgs e)
     {
-        ChaosGameLib.ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas);
+        ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas);
+        //ChaosSquare.CreateSquare(ChaosGameCanvas);
     }
 }
