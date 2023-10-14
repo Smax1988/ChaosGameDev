@@ -21,8 +21,7 @@ namespace ChaosGame
         /// <param name="e"></param>
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            ChaosTriangle triangle = Chaos.CreateTriangle(ChaosGameCanvas);
-            Chaos.CreateChaos(ChaosGameCanvas, triangle, triangle.RandomStartingPoint);
+            Chaos.CreateChaosTriangle(ChaosGameCanvas);
         }
     }
 }

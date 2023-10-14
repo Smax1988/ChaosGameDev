@@ -19,18 +19,18 @@ public class Chaos
     {
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
-        int triangleLength = canvasWidth - 100; // Spacing of 50 from left and right of the screen;
+        int triangleLength = canvasWidth - 200; // Spacing of 50 from left and right of the screen;
         Random random = new Random();
 
         // Left corner point A
         Coordinates pointA = new Coordinates();
-        pointA.X = 50;
-        pointA.Y = canvasHeight - 50;
+        pointA.X = 100;
+        pointA.Y = canvasHeight - 100;
 
         // Right corner point B
         Coordinates pointB = new Coordinates();
-        pointB.X = canvasWidth - 50;
-        pointB.Y = canvasHeight - 50;
+        pointB.X = canvasWidth - 100;
+        pointB.Y = canvasHeight - 100;
 
         // Top corner point C
         Coordinates pointC = new Coordinates();
@@ -63,10 +63,11 @@ public class Chaos
     /// and repeats the process.
     /// </summary>
     /// <param name="canvas">WPF canvas control</param>
-    /// <param name="triangle">Equilateral triangle</param>
-    /// <param name="point">Random Point on the canvas from where to start</param>
-    public static void CreateChaos(Canvas canvas, ChaosTriangle triangle, Coordinates point)
+    public static void CreateChaosTriangle(Canvas canvas)
     {
+        ChaosTriangle triangle = CreateTriangle(canvas);
+        Coordinates point = triangle.RandomStartingPoint;
+
         for (int i = 0; i < 200000; i++)
         {
             Coordinates randomPointOfTriangle = GetRandomPoint(triangle);
