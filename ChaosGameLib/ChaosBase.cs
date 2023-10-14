@@ -30,48 +30,6 @@ public abstract class ChaosBase
     }
 
     /// <summary>
-    /// Helper methods that gets a random corner point of the triangle
-    /// </summary>
-    /// <param name="triangle">The three coordiantes of an equilateral triangle</param>
-    /// <returns>A randomly chosen corner point of the triangle</returns>
-    protected static Coordinates GetRandomPoint(Triangle triangle)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 4); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return triangle.PointA;
-            case 2:
-                return triangle.PointB;
-            default:
-                return triangle.PointC;
-        }
-    }
-
-    /// <summary>
-    /// Helper methods that gets a random corner point of the square
-    /// </summary>
-    /// <param name="square">The three coordiantes of square</param>
-    /// <returns>A randomly chosen corner point of the square</returns>
-    protected static Coordinates GetRandomPoint(Square square)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 5); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return square.PointA;
-            case 2:
-                return square.PointB;
-            case 3:
-                return square.PointC;
-            default:
-                return square.PointD;
-        }
-    }
-
-    /// <summary>
     /// Creates a point that is in the middle of a triangle corner point and a given point
     /// </summary>
     /// <param name="trianglePoint">A corner point of the triangle</param>

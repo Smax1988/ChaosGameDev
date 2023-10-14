@@ -62,17 +62,37 @@ public class ChaosTriangle : ChaosBase
     /// and repeats the process.
     /// </summary>
     /// <param name="canvas">WPF canvas control</param>
-    public static void CreateChaosTriangle(Canvas canvas)
+    public static void CreateChaosTriangle(Canvas canvas, int iterations)
     {
         Triangle triangle = CreateTriangle(canvas);
         Coordinates point = triangle.RandomStartingPoint;
 
-        for (int i = 0; i < 200000; i++)
+        for (int i = 0; i < iterations; i++)
         {
             point = CreateMiddlePoint(GetRandomPoint(triangle), point);
             // Don't add first 100 points to account for some points in the beginning being outside of the triangle
             if (i > 100)
                 AddPoint(canvas, point);
+        }
+    }
+
+    /// <summary>
+    /// Helper methods that gets a random corner point of the triangle
+    /// </summary>
+    /// <param name="triangle">The three coordiantes of an equilateral triangle</param>
+    /// <returns>A randomly chosen corner point of the triangle</returns>
+    protected static Coordinates GetRandomPoint(Triangle triangle)
+    {
+        Random random = new Random();
+        int randomNumber = random.Next(1, 4); // min is included, max is excluded
+        switch (randomNumber)
+        {
+            case 1:
+                return triangle.PointA;
+            case 2:
+                return triangle.PointB;
+            default:
+                return triangle.PointC;
         }
     }
 }
