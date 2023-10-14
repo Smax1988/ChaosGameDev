@@ -1,5 +1,4 @@
 ﻿using ChaosGameLib;
-using ChaosGameLib.Models;
 using System.Windows;
 
 namespace ChaosGame;
@@ -21,7 +20,8 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void OnLoad(object sender, RoutedEventArgs e)
     {
-        //ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas, 200000);
-        ChaosSquare.CreateChaosSquare(ChaosGameCanvas, 100000);
+        ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas, 200000);
+        //ChaosSquare.CreateChaosSquare(ChaosGameCanvas, 200000);
+        //ChaosHex.CreateChaosHex(ChaosGameCanvas, 200000);
     }
 }

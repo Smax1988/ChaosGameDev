@@ -15,35 +15,11 @@ public class ChaosSquare : ChaosBase
         int sideLength = canvasWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
         Random random = new Random();
 
-        // Bottom left corner point A
-        Coordinates pointA = new Coordinates();
-        pointA.X = marginLeftRight;
-        pointA.Y = canvasHeight - marginBottom;
-
-        // Bottom right corner point B
-        Coordinates pointB = new Coordinates();
-        pointB.X = canvasWidth - marginLeftRight;
-        pointB.Y = canvasHeight - marginBottom;
-
-        // Top right corner point C
-        Coordinates pointD = new Coordinates();
-        pointD.X = marginLeftRight;
-        pointD.Y = canvasHeight - marginBottom - sideLength;
-
-        // Top left corner point D
-        Coordinates pointC = new Coordinates();
-        pointC.X = marginLeftRight + sideLength;
-        pointC.Y = canvasHeight - marginBottom - sideLength;
-
-        // Random Starting Point
-        Coordinates randomStartingPoint = new Coordinates();
-        randomStartingPoint.X = random.Next(0, canvasWidth);
-        randomStartingPoint.Y = random.Next(0, canvasHeight);
-
-        AddPoint(canvas, pointA);
-        AddPoint(canvas, pointB);
-        AddPoint(canvas, pointC);
-        AddPoint(canvas, pointD);
+        Coordinates pointA = new Coordinates(marginLeftRight, canvasHeight - marginBottom);
+        Coordinates pointB = new Coordinates(canvasWidth - marginLeftRight, canvasHeight - marginBottom);
+        Coordinates pointD = new Coordinates(marginLeftRight, canvasHeight - marginBottom - sideLength);
+        Coordinates pointC = new Coordinates(marginLeftRight + sideLength, canvasHeight - marginBottom - sideLength);
+        Coordinates randomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         // Create square and fill with corner points and random starting point
         Square square = new Square();

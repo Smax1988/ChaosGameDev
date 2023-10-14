@@ -1,6 +1,4 @@
 ﻿using ChaosGameLib.Models;
-using System;
-using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -30,28 +28,18 @@ public abstract class ChaosBase
     }
 
     /// <summary>
-    /// Creates a point that is in the middle of a triangle corner point and a given point
+    /// Creates a point that is in the middle of two given points
     /// </summary>
-    /// <param name="trianglePoint">A corner point of the triangle</param>
-    /// <param name="point">Another point</param>
-    /// <param name="useRandomColors">Option to change color of a point to a random color. Defauol is false</param>
+    /// <param name="poinA">One Point</param>
+    /// <param name="pointB">Another point</param>
     /// <returns>The point in the middle</returns>
-    protected static Coordinates CreateMiddlePoint(Coordinates trianglePoint, Coordinates point, bool useRandomColors = false)
+    protected static Coordinates CreateMiddlePoint(Coordinates poinA, Coordinates pointB)
     {
-        SolidColorBrush color = Brushes.Red;
-
-        if (useRandomColors)
-        {
-            Random random = new Random();
-            PropertyInfo[] properties = typeof(Brushes).GetProperties();
-            color = (SolidColorBrush)properties[random.Next(properties.Length)].GetValue(null, null)!;
-        }
-
         return new Coordinates
         {
-            X = (trianglePoint.X + point.X) / 2,
-            Y = (trianglePoint.Y + point.Y) / 2,
-            Color = color
+            X = (poinA.X + pointB.X) / 2,
+            Y = (poinA.Y + pointB.Y) / 2,
+            Color = Brushes.Red
         };
     }
 }

@@ -21,32 +21,15 @@ public class ChaosTriangle : ChaosBase
         int triangleLength = canvasWidth - marginLeftRight * 2; // length of each side of the triangle
         Random random = new Random();
 
-        // Bottom left corner point A
-        Coordinates pointA = new Coordinates();
-        pointA.X = marginLeftRight;
-        pointA.Y = canvasHeight - marginBottom;
-
-        // Bottom right corner point B
-        Coordinates pointB = new Coordinates();
-        pointB.X = canvasWidth - marginLeftRight;
-        pointB.Y = canvasHeight - marginBottom;
-
-        // Top corner point C
+        Coordinates pointA = new Coordinates(marginLeftRight, canvasHeight - marginBottom);
+        Coordinates pointB = new Coordinates(canvasWidth - marginLeftRight, canvasHeight - marginBottom);
         Coordinates pointC = new Coordinates();
         pointC.X = canvasWidth / 2;
         // Get height of equilateral triangle: Pythagoras
         pointC.Y = canvasHeight - marginBottom - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
 
-        // Random Starting Point
-        Coordinates randomStartingPoint = new Coordinates();
-        randomStartingPoint.X = random.Next(0, canvasWidth);
-        randomStartingPoint.Y = random.Next(0, canvasHeight);
+        Coordinates randomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
-        AddPoint(canvas, pointA);
-        AddPoint(canvas, pointB);
-        AddPoint(canvas, pointC);
-
-        // Create triangle and fill with corner points and random starting point
         Triangle triangle = new Triangle();
         triangle.PointA = pointA;
         triangle.PointB = pointB;
