@@ -39,7 +39,6 @@ public abstract class ChaosBase
         {
             X = (poinA.X + pointB.X) / 2,
             Y = (poinA.Y + pointB.Y) / 2,
-            Color = Brushes.Red
         };
     }
 }

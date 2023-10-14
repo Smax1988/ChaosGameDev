@@ -1,8 +1,9 @@
-﻿namespace ChaosGameLib.Models;
+﻿using System.Drawing;
 
-public class Triangle
+namespace ChaosGameLib.Models;
+
+public class Triangle: ShapeBase
 {
-    public Coordinates RandomStartingPoint { get; set; } = new Coordinates();
     public Coordinates PointA { get; set; } = new Coordinates ();
     public Coordinates PointB { get; set; } = new Coordinates ();
     public Coordinates PointC { get; set; } = new Coordinates ();

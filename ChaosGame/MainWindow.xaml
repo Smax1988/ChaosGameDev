@@ -8,8 +8,44 @@
         Title="MainWindow" Height="800" Width="1000"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    
-    <Grid>
-        <Canvas Name="ChaosGameCanvas" Background="Black" Loaded="OnLoad"></Canvas>
-    </Grid>
+
+    <DockPanel Margin="0,0,0,-4" >
+        <Menu DockPanel.Dock="Top" >
+            <!-- Shape -->
+            <MenuItem Header="Shape">
+                <!-- Triangle -->
+                <MenuItem Header="Triangle">
+                    <!-- Iterations -->
+                    <MenuItem Click="Triangle_Click" Header=" 10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Triangle_Click" Header="100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Triangle_Click" Header="200.000 Iterations" Tag="200000" />
+                </MenuItem>
+                <!-- Square -->
+                <MenuItem Header="Square" >
+                    <!-- Iterations -->
+                    <MenuItem Click="Square_Click" Header=" 10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Square_Click" Header="100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Square_Click" Header="200.000 Iterations" Tag="200000" />
+                </MenuItem>
+                <!-- Hexagon -->
+                <MenuItem Header="Hexagon" >
+                    <!-- Iterations -->
+                    <MenuItem Click="Hexagon_Click" Header=" 10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Hexagon_Click" Header="100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Hexagon_Click" Header="200.000 Iterations" Tag="200000" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Click="Clear_Click" Header="Clear" />
+        </Menu>
+
+        <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" >
+            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" Width="400">
+                <Label Name="StatusMessage" VerticalAlignment="Center" Height="30" HorizontalAlignment="Left" />
+            </StackPanel>
+        </StatusBar>
+
+        <Grid Name="canvasParent">
+            <Canvas Name="ChaosGameCanvas" Background="Black"></Canvas>
+        </Grid>
+    </DockPanel>
 </Window>

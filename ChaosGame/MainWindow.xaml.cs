@@ -1,5 +1,7 @@
 ﻿using ChaosGameLib;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ChaosGame;
 
@@ -13,15 +15,46 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    /// <summary>
-    /// After Canvas is loaded start ChaosGame
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void OnLoad(object sender, RoutedEventArgs e)
+    private void Triangle_Click(object sender, RoutedEventArgs e)
     {
-        ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas, 200000);
-        //ChaosSquare.CreateChaosSquare(ChaosGameCanvas, 200000);
-        //ChaosHex.CreateChaosHex(ChaosGameCanvas, 200000);
+        ChaosGameCanvas.Children.Clear();
+
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        ChaosTriangle.CreateChaosTriangle(ChaosGameCanvas, int.Parse(iterations!));
+    }
+
+    private void Square_Click(object sender, RoutedEventArgs e)
+    {
+        ChaosGameCanvas.Children.Clear();
+
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        ChaosSquare.CreateChaosSquare(ChaosGameCanvas, int.Parse(iterations!));
+    }
+
+    private void Hexagon_Click(object sender, RoutedEventArgs e)
+    {
+        ChaosGameCanvas.Children.Clear();
+
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        ChaosHex.CreateChaosHex(ChaosGameCanvas, int.Parse(iterations!));
+    }
+
+    private void Clear_Click(object sender, RoutedEventArgs e)
+    {
+        //canvasParent.Children.Remove(ChaosGameCanvas);
+
+        //Canvas newCanvas = new Canvas
+        //{
+        //    Name = "ChaosGameCanvas",
+        //    Background = new SolidColorBrush(Colors.Black)
+        //};
+
+        //canvasParent.Children.Add(newCanvas);
     }
 }

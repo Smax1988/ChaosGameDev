@@ -17,7 +17,7 @@ public class ChaosTriangle : ChaosBase
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
         int marginLeftRight = 100; // Spacing from left and right of the screen;
-        int marginBottom = 50; // spacing from bottom
+        int marginBottom = 25; // spacing from bottom
         int triangleLength = canvasWidth - marginLeftRight * 2; // length of each side of the triangle
         Random random = new Random();
 
@@ -28,13 +28,11 @@ public class ChaosTriangle : ChaosBase
         // Get height of equilateral triangle: Pythagoras
         pointC.Y = canvasHeight - marginBottom - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
 
-        Coordinates randomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
-
         Triangle triangle = new Triangle();
         triangle.PointA = pointA;
         triangle.PointB = pointB;
         triangle.PointC = pointC;
-        triangle.RandomStartingPoint = randomStartingPoint;
+        triangle.RandomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         return triangle;
     }

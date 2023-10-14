@@ -11,7 +11,7 @@ public class ChaosSquare : ChaosBase
         int canvasWidth = (int)canvas.ActualWidth;
         int canvasHeight = (int)canvas.ActualHeight;
         int marginLeftRight = 150; // Spacing from left and right of the screen;
-        int marginBottom = 50; // spacing from bottom
+        int marginBottom = 20; // spacing from bottom
         int sideLength = canvasWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
         Random random = new Random();
 
@@ -19,7 +19,6 @@ public class ChaosSquare : ChaosBase
         Coordinates pointB = new Coordinates(canvasWidth - marginLeftRight, canvasHeight - marginBottom);
         Coordinates pointD = new Coordinates(marginLeftRight, canvasHeight - marginBottom - sideLength);
         Coordinates pointC = new Coordinates(marginLeftRight + sideLength, canvasHeight - marginBottom - sideLength);
-        Coordinates randomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         // Create square and fill with corner points and random starting point
         Square square = new Square();
@@ -27,7 +26,7 @@ public class ChaosSquare : ChaosBase
         square.PointB = pointB;
         square.PointC = pointC;
         square.PointD = pointD;
-        square.RandomStartingPoint = randomStartingPoint;
+        square.RandomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         return square;
     }

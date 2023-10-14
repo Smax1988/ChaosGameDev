@@ -23,7 +23,6 @@ public class ChaosHex : ChaosBase
         Coordinates pointE = new Coordinates (centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2 );
         Coordinates pointF = new Coordinates (centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2 );
         // Random Starting Point
-        Coordinates randomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         Hexagon hexagon = new Hexagon();
         hexagon.PointA = pointA;
@@ -32,7 +31,7 @@ public class ChaosHex : ChaosBase
         hexagon.PointD = pointD;
         hexagon.PointE = pointE;
         hexagon.PointF = pointF;
-        hexagon.RandomStartingPoint = randomStartingPoint;
+        hexagon.RandomStartingPoint = new Coordinates(random.Next(0, canvasWidth), random.Next(0, canvasHeight));
 
         return hexagon;
     }
