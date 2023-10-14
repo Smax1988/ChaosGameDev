@@ -1,6 +1,6 @@
 ﻿namespace ChaosGameLib.Models;
 
-public class ChaosTriangle
+public class Triangle
 {
     public Coordinates PointA { get; set; } = new Coordinates { X = 0, Y = 0 };
     public Coordinates PointB { get; set; } = new Coordinates { X = 0, Y = 0 };
