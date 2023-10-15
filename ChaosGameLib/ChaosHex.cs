@@ -28,6 +28,7 @@ public class ChaosHex : ChaosBase
         }
         return bitmap;
     }
+
     private static Hexagon CreateHexagon(Bitmap bitmap, Color color)
     {
         int bitmapWidth = bitmap.Width;
@@ -58,7 +59,7 @@ public class ChaosHex : ChaosBase
         return hexagon;
     }
 
-    protected static Coordinates GetRandomPoint(Hexagon hexagon)
+    private static Coordinates GetRandomPoint(Hexagon hexagon)
     {
         Random random = new Random();
         int randomNumber = random.Next(1, 7); // min is included, max is excluded

@@ -9,9 +9,8 @@ public abstract class ChaosBase
     /// <summary>
     /// Adds a Point with X and Y Coordinates to a canvas
     /// </summary>
-    /// <param name="canvas">WPF Canvas</param>
-    /// <param name="coordinates">X and Y Coordinates of the point and the color</param>
-    // Define a function to add a point to a bitmap
+    /// <param name="bitmap"></param>
+    /// <param name="point">X and Y Coordinates of the point and the color</param>
     protected static void AddPoint(Bitmap bitmap, Coordinates point)
     {
         // Coordinates need to be greater than 0 and smaller than image size

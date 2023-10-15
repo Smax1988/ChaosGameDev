@@ -34,7 +34,7 @@ public class ChaosTriangle : ChaosBase
     /// </summary>
     /// <param name="bitmap">This is where the image is created</param>
     /// <returns>The Created Triangle with all of its Points and the random generated starting point</returns>
-    public static Triangle CreateTriangle(Bitmap bitmap, Color color)
+    private static Triangle CreateTriangle(Bitmap bitmap, Color color)
     {
         int bitmapWidth = bitmap.Width;
         int bitmapHeight = bitmap.Height;
@@ -66,7 +66,7 @@ public class ChaosTriangle : ChaosBase
     /// </summary>
     /// <param name="triangle">The three coordiantes of an equilateral triangle</param>
     /// <returns>A randomly chosen corner point of the triangle</returns>
-    protected static Coordinates GetRandomPoint(Triangle triangle)
+    private static Coordinates GetRandomPoint(Triangle triangle)
     {
         Random random = new Random();
         int randomNumber = random.Next(1, 4); // min is included, max is excluded

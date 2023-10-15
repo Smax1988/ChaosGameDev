@@ -68,7 +68,7 @@ public class ChaosSquare : ChaosBase
     /// </summary>
     /// <param name="square">The three coordiantes of square</param>
     /// <returns>A randomly chosen corner point of the square</returns>
-    protected static Coordinates GetRandomPoint(Square square)
+    private static Coordinates GetRandomPoint(Square square)
     {
         Random random = new Random();
         int randomNumber = random.Next(1, 5); // min is included, max is excluded

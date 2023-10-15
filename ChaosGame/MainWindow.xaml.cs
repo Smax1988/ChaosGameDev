@@ -40,6 +40,15 @@ public partial class MainWindow : Window
         SetImage(image);
     }
 
+    private void Pentagon_Click(object sender, RoutedEventArgs e)
+    {
+        var menuItem = (MenuItem)sender;
+        string? iterations = menuItem.Tag as string;
+
+        Bitmap image = ChaosPentagon.CreateChaosPentagon(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        SetImage(image);
+    }
+
     private void Hexagon_Click(object sender, RoutedEventArgs e)
     {
         var menuItem = (MenuItem)sender;
@@ -49,7 +58,10 @@ public partial class MainWindow : Window
         SetImage(image);
     }
 
-
+    /// <summary>
+    /// Sets a bitmap as the source of an image
+    /// </summary>
+    /// <param name="image">Bitmap</param>
     private void SetImage(Bitmap image)
     {
         using MemoryStream memory = new MemoryStream();
@@ -109,7 +121,7 @@ public partial class MainWindow : Window
 
     private void Image_MouseWheel(object sender, MouseWheelEventArgs e)
     {
-        if (ChaosImage.Source == null) return; // Check if there is an image loaded
+        if (ChaosImage.Source == null) return; 
 
         if (e.Delta > 0) // Zoom in
         {
@@ -122,7 +134,6 @@ public partial class MainWindow : Window
                 scaleFactor -= scaleIncrement;
             }
         }
-
         ScaleImage();
     }
 
@@ -139,4 +150,6 @@ public partial class MainWindow : Window
             ChaosImage.LayoutTransform = newTransform;
         }
     }
+
+
 }

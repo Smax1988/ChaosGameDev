@@ -31,6 +31,15 @@
                     <MenuItem Click="Square_Click" Header="  200.000 Iterations" Tag="200000" />
                     <MenuItem Click="Square_Click" Header="1.000.000 Iterations" Tag="1000000" />
                 </MenuItem>
+                <!-- Pentagon -->
+                <MenuItem Header="Pentagon" >
+                    <!-- Iterations -->
+                    <MenuItem Click="Pentagon_Click" Header="    3.000 Iterations" Tag="3000" />
+                    <MenuItem Click="Pentagon_Click" Header="   10.000 Iterations" Tag="10000" />
+                    <MenuItem Click="Pentagon_Click" Header="  100.000 Iterations" Tag="100000" />
+                    <MenuItem Click="Pentagon_Click" Header="  200.000 Iterations" Tag="200000" />
+                    <MenuItem Click="Pentagon_Click" Header="1.000.000 Iterations" Tag="1000000" />
+                </MenuItem>
                 <!-- Hexagon -->
                 <MenuItem Header="Hexagon" >
                     <!-- Iterations -->
