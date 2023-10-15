@@ -150,6 +150,4 @@ public partial class MainWindow : Window
             ChaosImage.LayoutTransform = newTransform;
         }
     }
-
-
 }
