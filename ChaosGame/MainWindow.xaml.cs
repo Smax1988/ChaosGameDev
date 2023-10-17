@@ -57,7 +57,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosHexagon.CreateHexBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        Bitmap image = ChaosHexagon.CreateHexagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
     }
 

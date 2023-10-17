@@ -10,7 +10,6 @@ public class ChaosPentagon : ChaosBase
     public static BitmapImage CreatePentagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
-
         Coordinates LastCornerPoint = new Coordinates();
         Pentagon pentagon = CreatePentagon(bitmap, color);
         Coordinates point = pentagon.RandomStartingPoint;

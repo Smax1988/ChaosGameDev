@@ -7,7 +7,7 @@ namespace ChaosGameLib;
 
 public class ChaosHexagon : ChaosBase
 {
-    public static BitmapImage CreateHexBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static BitmapImage CreateHexagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
