@@ -55,25 +55,4 @@ public class ChaosTriangle : ChaosBase
 
         return triangle;
     }
-
-
-    /// <summary>
-    /// Helper methods that gets a random corner point of the triangle
-    /// </summary>
-    /// <param name="triangle">The three coordiantes of an equilateral triangle</param>
-    /// <returns>A randomly chosen corner point of the triangle</returns>
-    private static Coordinates GetRandomPoint(Triangle triangle)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 4); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return triangle.PointA;
-            case 2:
-                return triangle.PointB;
-            default:
-                return triangle.PointC;
-        }
-    }
 }

@@ -54,23 +54,4 @@ public class ChaosPentagon : ChaosBase
 
         return pentagon;
     }
-
-    private static Coordinates GetRandomPoint(Pentagon pentagon)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 6); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return pentagon.PointA;
-            case 2:
-                return pentagon.PointB;
-            case 3:
-                return pentagon.PointC;
-            case 4:
-                return pentagon.PointD;
-            default:
-                return pentagon.PointE;
-        }
-    }
 }

@@ -58,26 +58,4 @@ public class ChaosSquare : ChaosBase
 
         return square;
     }
-
-    /// <summary>
-    /// Helper methods that gets a random corner point of the square
-    /// </summary>
-    /// <param name="square">The three coordiantes of square</param>
-    /// <returns>A randomly chosen corner point of the square</returns>
-    private static Coordinates GetRandomPoint(Square square)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 5); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return square.PointA;
-            case 2:
-                return square.PointB;
-            case 3:
-                return square.PointC;
-            default:
-                return square.PointD;
-        }
-    }
 }

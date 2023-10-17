@@ -49,25 +49,4 @@ public class ChaosHex : ChaosBase
 
         return hexagon;
     }
-
-    private static Coordinates GetRandomPoint(Hexagon hexagon)
-    {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 7); // min is included, max is excluded
-        switch (randomNumber)
-        {
-            case 1:
-                return hexagon.PointA;
-            case 2:
-                return hexagon.PointB;
-            case 3:
-                return hexagon.PointC;
-            case 4:
-                return hexagon.PointD;
-            case 5:
-                return hexagon.PointE;
-            default:
-                return hexagon.PointF;
-        }
-    }
 }
