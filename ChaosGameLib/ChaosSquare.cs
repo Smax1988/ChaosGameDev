@@ -20,7 +20,7 @@ public class ChaosSquare : ChaosBase
 
         for (int i = 0; i < iterations; i++)
         {
-            Coordinates randomCornerPoint = GetRandomPoint(square);
+            Coordinates randomCornerPoint = GetRandomCornerPoint(square);
             if (randomCornerPoint != LastCornerPoint)
             {
                 point = CreateMiddlePoint(randomCornerPoint, point);
@@ -45,7 +45,6 @@ public class ChaosSquare : ChaosBase
         int marginLeftRight = 150; // Spacing from left and right of the screen;
         int marginBottom = 95; // spacing from bottom
         int sideLength = bitmapWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
-        Random random = new Random();
 
         Coordinates pointA = new Coordinates(marginLeftRight, bitmapHeight - marginBottom, color);
         Coordinates pointB = new Coordinates(bitmapWidth - marginLeftRight, bitmapHeight - marginBottom, color);
