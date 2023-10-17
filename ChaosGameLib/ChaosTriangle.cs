@@ -1,13 +1,14 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
 public class ChaosTriangle : ChaosBase
 {
 
-    public static Bitmap CreateTriangleBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static BitmapImage CreateTriangleBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Triangle triangle = CreateTriangle(bitmap, color);
@@ -21,7 +22,7 @@ public class ChaosTriangle : ChaosBase
             if (i > 100)
                 AddPoint(bitmap, point);
         }
-        return bitmap;
+        return CreateBitmapImage(bitmap);
     }
 
 

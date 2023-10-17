@@ -1,12 +1,13 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
 public class ChaosPentagon : ChaosBase
 {
-    public static Bitmap CreatePentagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static BitmapImage CreatePentagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
 
@@ -26,7 +27,7 @@ public class ChaosPentagon : ChaosBase
                     AddPoint(bitmap, point);
             }
         }
-        return bitmap;
+        return CreateBitmapImage(bitmap);
     }
 
     public static Pentagon CreatePentagon(Bitmap bitmap, Color color)

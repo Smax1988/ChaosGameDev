@@ -1,12 +1,13 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
-public class ChaosHex : ChaosBase
+public class ChaosHexagon : ChaosBase
 {
-    public static Bitmap CreateHexBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static BitmapImage CreateHexBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
@@ -25,7 +26,7 @@ public class ChaosHex : ChaosBase
                     AddPoint(bitmap, point);
             }
         }
-        return bitmap;
+        return CreateBitmapImage(bitmap);
     }
 
     private static Hexagon CreateHexagon(Bitmap bitmap, Color color)

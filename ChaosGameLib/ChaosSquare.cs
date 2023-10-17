@@ -1,12 +1,13 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
 public class ChaosSquare : ChaosBase
 {
-    public static Bitmap CreateSquareBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static BitmapImage CreateSquareBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
@@ -25,7 +26,7 @@ public class ChaosSquare : ChaosBase
                     AddPoint(bitmap, point);
             }
         }
-        return bitmap;
+        return CreateBitmapImage(bitmap);
     }
 
 

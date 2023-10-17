@@ -1,6 +1,9 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
@@ -46,5 +49,19 @@ public abstract class ChaosBase
             return shape.AllPoints[randomIndex];
         }
         throw new InvalidOperationException("The list of coordinates is empty. Cannot get a random element.");
+    }
+
+    protected static BitmapImage CreateBitmapImage(Bitmap image)
+    {
+        using MemoryStream memory = new MemoryStream();
+        image.Save(memory, ImageFormat.Bmp);
+        memory.Position = 0;
+        BitmapImage bitmapImage = new BitmapImage();
+        bitmapImage.BeginInit();
+        bitmapImage.StreamSource = memory;
+        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        bitmapImage.EndInit();
+
+        return bitmapImage;
     }
 }

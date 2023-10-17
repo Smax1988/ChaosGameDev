@@ -32,7 +32,6 @@ public partial class MainWindow : Window
         string? iterations = menuItem.Tag as string;
 
         Bitmap image = ChaosTriangle.CreateTriangleBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
-        SetImage(image);
     }
 
     private void Square_Click(object sender, RoutedEventArgs e)
@@ -58,26 +57,8 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosHex.CreateHexBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        Bitmap image = ChaosHexagon.CreateHexBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
-    }
-
-    /// <summary>
-    /// Sets a bitmap as the source of an image
-    /// </summary>
-    /// <param name="image">Bitmap</param>
-    private void SetImage(Bitmap image)
-    {
-        using MemoryStream memory = new MemoryStream();
-        image.Save(memory, ImageFormat.Bmp);
-        memory.Position = 0;
-        BitmapImage bitmapImage = new BitmapImage();
-        bitmapImage.BeginInit();
-        bitmapImage.StreamSource = memory;
-        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-        bitmapImage.EndInit();
-
-        ChaosImage.Source = bitmapImage;
     }
 
     // CHANGE COLOR
