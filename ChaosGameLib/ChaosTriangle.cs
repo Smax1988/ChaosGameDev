@@ -7,9 +7,9 @@ namespace ChaosGameLib;
 public class ChaosTriangle : ChaosBase
 {
 
-    public static Bitmap CreateChaosTriangle(int iterations, Color color)
+    public static Bitmap CreateTriangleBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
-        Bitmap bitmap = new Bitmap(1000, 800);
+        Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Triangle triangle = CreateTriangle(bitmap, color);
         Coordinates point = triangle.RandomStartingPoint;
 

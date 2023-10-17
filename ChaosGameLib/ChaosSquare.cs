@@ -6,9 +6,9 @@ namespace ChaosGameLib;
 
 public class ChaosSquare : ChaosBase
 {
-    public static Bitmap CreateChaosSquare(int iterations, Color color)
+    public static Bitmap CreateSquareBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
-        Bitmap bitmap = new Bitmap(1000, 800);
+        Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
         Square square = CreateSquare(bitmap, color);
         Coordinates point = square.RandomStartingPoint;

@@ -16,6 +16,10 @@ namespace ChaosGame;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly int imgWidth = 1000;
+    private readonly int imgHeight = 800;
+
+
     public MainWindow()
     {
         InitializeComponent();
@@ -27,7 +31,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosTriangle.CreateChaosTriangle(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        Bitmap image = ChaosTriangle.CreateTriangleBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
     }
 
@@ -36,7 +40,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosSquare.CreateChaosSquare(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        Bitmap image = ChaosSquare.CreateSquareBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
     }
 
@@ -45,7 +49,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosPentagon.CreateChaosPentagon(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        Bitmap image = ChaosPentagon.CreatePentagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
     }
 
@@ -54,7 +58,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosHex.CreateChaosHex(int.Parse(iterations!), System.Drawing.Color.Cyan);
+        Bitmap image = ChaosHex.CreateHexBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
         SetImage(image);
     }
 

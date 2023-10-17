@@ -6,9 +6,9 @@ namespace ChaosGameLib;
 
 public class ChaosHex : ChaosBase
 {
-    public static Bitmap CreateChaosHex(int iterations, Color color)
+    public static Bitmap CreateHexBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
-        Bitmap bitmap = new Bitmap(1000, 800);
+        Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
         Hexagon hexaxon = CreateHexagon(bitmap, color);
         Coordinates point = hexaxon.RandomStartingPoint;

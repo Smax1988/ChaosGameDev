@@ -6,9 +6,9 @@ namespace ChaosGameLib;
 
 public class ChaosPentagon : ChaosBase
 {
-    public static Bitmap CreateChaosPentagon(int iterations, Color color)
+    public static Bitmap CreatePentagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
-        Bitmap bitmap = new Bitmap(1000, 800);
+        Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
 
         Coordinates LastCornerPoint = new Coordinates();
         Pentagon pentagon = CreatePentagon(bitmap, color);
