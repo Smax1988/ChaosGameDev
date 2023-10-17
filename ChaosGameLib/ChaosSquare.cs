@@ -6,11 +6,6 @@ namespace ChaosGameLib;
 
 public class ChaosSquare : ChaosBase
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="iterations"></param>
-    /// <returns></returns>
     public static Bitmap CreateChaosSquare(int iterations, Color color)
     {
         Bitmap bitmap = new Bitmap(1000, 800);
@@ -33,11 +28,7 @@ public class ChaosSquare : ChaosBase
         return bitmap;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="bitmap"></param>
-    /// <returns></returns>
+
     private static Square CreateSquare(Bitmap bitmap, Color color)
     {
         int bitmapWidth = bitmap.Width;

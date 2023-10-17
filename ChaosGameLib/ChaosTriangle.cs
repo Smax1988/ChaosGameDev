@@ -6,11 +6,7 @@ namespace ChaosGameLib;
 
 public class ChaosTriangle : ChaosBase
 {
-    /// <summary>
-    /// Draws a point between a random corner point of the triangle and a starting point,
-    /// then between that newly added point and another random corner point of the triangle
-    /// and repeats the process.
-    /// </summary>
+
     public static Bitmap CreateChaosTriangle(int iterations, Color color)
     {
         Bitmap bitmap = new Bitmap(1000, 800);
@@ -28,12 +24,7 @@ public class ChaosTriangle : ChaosBase
         return bitmap;
     }
 
-    /// <summary>
-    ///  Creates the initial equilateral triangle and the first random point
-    /// Canvas: Point (0,0) is top left, Point (width, height) is bottom right.
-    /// </summary>
-    /// <param name="bitmap">This is where the image is created</param>
-    /// <returns>The Created Triangle with all of its Points and the random generated starting point</returns>
+
     private static Triangle CreateTriangle(Bitmap bitmap, Color color)
     {
         int bitmapWidth = bitmap.Width;
