@@ -9,14 +9,13 @@ public class ChaosHex : ChaosBase
     public static Bitmap CreateChaosHex(int iterations, Color color)
     {
         Bitmap bitmap = new Bitmap(1000, 800);
-
         Coordinates LastCornerPoint = new Coordinates();
         Hexagon hexaxon = CreateHexagon(bitmap, color);
         Coordinates point = hexaxon.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
         {
-            Coordinates randomCornerPoint = GetRandomPoint(hexaxon);
+            Coordinates randomCornerPoint = GetRandomCornerPoint(hexaxon);
             if (randomCornerPoint != LastCornerPoint)
             {
                 point = CreateMiddlePoint(randomCornerPoint, point);
@@ -36,7 +35,6 @@ public class ChaosHex : ChaosBase
         int centerLeftRight = bitmapWidth / 2; // Center of the bitmap horizontally
         int centerTopBottom = bitmapHeight / 2 - 50; // Center of the bitmap vertically
         int sideLength = 400;
-        Random random = new Random();
 
         // Calculate the corner points of the hexagon
         Coordinates pointA = new Coordinates(centerLeftRight, centerTopBottom - sideLength, color);
@@ -45,15 +43,8 @@ public class ChaosHex : ChaosBase
         Coordinates pointD = new Coordinates(centerLeftRight, centerTopBottom + sideLength, color);
         Coordinates pointE = new Coordinates(centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom + sideLength / 2, color);
         Coordinates pointF = new Coordinates(centerLeftRight - (int)(sideLength * Math.Sqrt(3) / 2), centerTopBottom - sideLength / 2, color);
-        // Random Starting Point
 
-        Hexagon hexagon = new Hexagon();
-        hexagon.PointA = pointA;
-        hexagon.PointB = pointB;
-        hexagon.PointC = pointC;
-        hexagon.PointD = pointD;
-        hexagon.PointE = pointE;
-        hexagon.PointF = pointF;
+        Hexagon hexagon = new Hexagon(pointA, pointB, pointC, pointD, pointE, pointF);
         hexagon.RandomStartingPoint = new Coordinates(random.Next(0, bitmapWidth), random.Next(0, bitmapHeight));
 
         return hexagon;

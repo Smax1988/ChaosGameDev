@@ -16,7 +16,7 @@ public class ChaosPentagon : ChaosBase
 
         for (int i = 0; i < iterations; i++)
         {
-            Coordinates randomCornerPoint = GetRandomPoint(pentagon);
+            Coordinates randomCornerPoint = GetRandomCornerPoint(pentagon);
             if (randomCornerPoint != LastCornerPoint)
             {
                 point = CreateMiddlePoint(randomCornerPoint, point);
@@ -36,7 +36,6 @@ public class ChaosPentagon : ChaosBase
         int centerLeftRight = bitmapWidth / 2; // Center of the bitmap horizontally
         int centerTopBottom = bitmapHeight / 2 - 50; // Center of the bitmap vertically
         int sideLength = 420;
-        Random random = new Random();
 
         double angleIncrement = 2 * Math.PI / 5;
         double startAngle = Math.PI / 2;
@@ -50,12 +49,7 @@ public class ChaosPentagon : ChaosBase
             coordinates[i] = new Coordinates(x, y, color);
         }
 
-        Pentagon pentagon = new Pentagon();
-        pentagon.PointA = coordinates[0];
-        pentagon.PointB = coordinates[1];
-        pentagon.PointC = coordinates[2];
-        pentagon.PointD = coordinates[3];
-        pentagon.PointE = coordinates[4];
+        Pentagon pentagon = new Pentagon(coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4]);
         pentagon.RandomStartingPoint = new Coordinates(random.Next(0, bitmapWidth), random.Next(0, bitmapHeight));
 
         return pentagon;

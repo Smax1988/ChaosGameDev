@@ -53,11 +53,7 @@ public class ChaosSquare : ChaosBase
         Coordinates pointC = new Coordinates(marginLeftRight + sideLength, bitmapHeight - marginBottom - sideLength, color);
 
         // Create square and fill with corner points and random starting point
-        Square square = new Square();
-        square.PointA = pointA;
-        square.PointB = pointB;
-        square.PointC = pointC;
-        square.PointD = pointD;
+        Square square = new Square(pointA, pointB, pointC, pointD);
         square.RandomStartingPoint = new Coordinates(random.Next(0, bitmapWidth), random.Next(0, bitmapHeight), color);
 
         return square;

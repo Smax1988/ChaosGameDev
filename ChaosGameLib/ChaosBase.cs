@@ -6,6 +6,8 @@ namespace ChaosGameLib;
 
 public abstract class ChaosBase
 {
+    protected static readonly Random random = new Random();
+
     /// <summary>
     /// Adds a Point with X and Y Coordinates to a canvas
     /// </summary>
@@ -34,5 +36,15 @@ public abstract class ChaosBase
             Y = (pointA.Y + pointB.Y) / 2,
             Color = pointA.Color
         };
+    }
+
+    protected static Coordinates GetRandomCornerPoint(ShapeBase shape)
+    {
+        if (shape.AllPoints.Count > 0)
+        {
+            int randomIndex = random.Next(0, shape.AllPoints.Count); // min included, max excluded
+            return shape.AllPoints[randomIndex];
+        }
+        throw new InvalidOperationException("The list of coordinates is empty. Cannot get a random element.");
     }
 }

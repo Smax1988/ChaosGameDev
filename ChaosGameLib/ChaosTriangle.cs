@@ -11,7 +11,6 @@ public class ChaosTriangle : ChaosBase
     /// then between that newly added point and another random corner point of the triangle
     /// and repeats the process.
     /// </summary>
-    /// <param name="bitmap">the image canvas</param>
     public static Bitmap CreateChaosTriangle(int iterations, Color color)
     {
         Bitmap bitmap = new Bitmap(1000, 800);
@@ -20,7 +19,8 @@ public class ChaosTriangle : ChaosBase
 
         for (int i = 0; i < iterations; i++)
         {
-            point = CreateMiddlePoint(GetRandomPoint(triangle), point);
+            Coordinates randomCornerPoint = GetRandomCornerPoint(triangle);
+            point = CreateMiddlePoint(randomCornerPoint, point);
             // Don't add first 100 points to account for some points in the beginning being outside of the triangle
             if (i > 100)
                 AddPoint(bitmap, point);
@@ -41,7 +41,6 @@ public class ChaosTriangle : ChaosBase
         int marginLeftRight = 100; // Spacing from left and right of the screen;
         int marginBottom = 100; // spacing from bottom
         int triangleLength = bitmapWidth - marginLeftRight * 2; // length of each side of the triangle
-        Random random = new Random();
 
         Coordinates pointA = new Coordinates(marginLeftRight, bitmapHeight - marginBottom, color);
         Coordinates pointB = new Coordinates(bitmapWidth - marginLeftRight, bitmapHeight - marginBottom, color);
@@ -51,10 +50,7 @@ public class ChaosTriangle : ChaosBase
         pointC.Y = bitmapHeight - marginBottom - (int)Math.Sqrt(Math.Pow(triangleLength, 2) - Math.Pow(triangleLength / 2, 2));
         pointC.Color = color;
 
-        Triangle triangle = new Triangle();
-        triangle.PointA = pointA;
-        triangle.PointB = pointB;
-        triangle.PointC = pointC;
+        Triangle triangle = new Triangle(pointA, pointB, pointC);
         triangle.RandomStartingPoint = new Coordinates(random.Next(0, bitmapWidth), random.Next(0, bitmapHeight), color);
 
         return triangle;
