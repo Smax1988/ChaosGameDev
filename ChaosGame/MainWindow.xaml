@@ -67,8 +67,10 @@
             </StackPanel>
         </StatusBar>
 
-        <Grid Name="canvasParent" Margin="0">
+        <Grid Name="canvasParent" Margin="0" Background="Black">
             <Image x:Name="ChaosImage" Stretch="None" MouseWheel="Image_MouseWheel"/>
         </Grid>
     </DockPanel>
 </Window>
+
+

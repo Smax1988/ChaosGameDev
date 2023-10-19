@@ -1,8 +1,6 @@
 ﻿using ChaosGameLib;
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -31,7 +29,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosTriangle.CreateTriangleBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        ChaosImage.Source = ChaosTriangle.CreateTriangleBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
     }
 
     private void Square_Click(object sender, RoutedEventArgs e)
@@ -39,8 +37,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosSquare.CreateSquareBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
-        SetImage(image);
+        ChaosImage.Source = ChaosSquare.CreateSquareBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
     }
 
     private void Pentagon_Click(object sender, RoutedEventArgs e)
@@ -48,8 +45,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosPentagon.CreatePentagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
-        SetImage(image);
+        ChaosImage.Source = ChaosPentagon.CreatePentagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
     }
 
     private void Hexagon_Click(object sender, RoutedEventArgs e)
@@ -57,8 +53,7 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        Bitmap image = ChaosHexagon.CreateHexagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
-        SetImage(image);
+        ChaosImage.Source = ChaosHexagon.CreateHexagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
     }
 
     // CHANGE COLOR
