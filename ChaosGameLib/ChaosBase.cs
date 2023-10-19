@@ -12,9 +12,9 @@ public abstract class ChaosBase
     protected static readonly Random random = new Random();
 
     /// <summary>
-    /// Adds a Point with X and Y Coordinates to a canvas
+    /// Adds a Point (pixel) with X and Y Coordinates to a bitmap
     /// </summary>
-    /// <param name="bitmap"></param>
+    /// <param name="bitmap">Bitmap</param>
     /// <param name="point">X and Y Coordinates of the point and the color</param>
     protected static void AddPoint(Bitmap bitmap, Coordinates point)
     {
@@ -28,8 +28,8 @@ public abstract class ChaosBase
     /// <summary>
     /// Creates a point that is in the middle of two given points
     /// </summary>
-    /// <param name="pointA">One Point</param>
-    /// <param name="pointB">Another point</param>
+    /// <param name="pointA">Coordinates of one Point</param>
+    /// <param name="pointB">Coordinates of another point</param>
     /// <returns>The point in the middle</returns>
     protected static Coordinates CreateMiddlePoint(Coordinates pointA, Coordinates pointB)
     {
@@ -41,6 +41,12 @@ public abstract class ChaosBase
         };
     }
 
+    /// <summary>
+    /// Selects a random corner point of a given shape by generating a random index to
+    /// get an item from the List AllPoints
+    /// </summary>
+    /// <param name="shape">Either a Triangle, a Square, a Pentagon or a Hexagon</param>
+    /// <returns>Coordnates of the randomly selected corner point</returns>
     protected static Coordinates GetRandomCornerPoint(ShapeBase shape)
     {
         if (shape.AllPoints.Count > 0)
@@ -51,6 +57,11 @@ public abstract class ChaosBase
         throw new InvalidOperationException("The list of coordinates is empty. Cannot get a random element.");
     }
 
+    /// <summary>
+    /// Creates a BitmapImage from a bitmap using memory stream
+    /// </summary>
+    /// <param name="image">The bitmap that needs to be converted to a bitmap image</param>
+    /// <returns>The converted BitmapImage</returns>
     protected static BitmapImage CreateBitmapImage(Bitmap image)
     {
         using MemoryStream memory = new MemoryStream();

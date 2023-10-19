@@ -7,11 +7,18 @@ namespace ChaosGameLib;
 
 public class ChaosTriangle : ChaosBase
 {
-
+    /// <summary>
+    /// Creates the fractal based on a triangle as a BitmapImage
+    /// </summary>
+    /// <param name="iterations">Number of points added to the bitmap</param>
+    /// <param name="imgWidth">Widht of BitmapImage</param>
+    /// <param name="imgHeight">Height of BitmapImage</param>
+    /// <param name="color">Color of the points</param>
+    /// <returns>Fractal based on a triangle as BitmapImage</returns>
     public static BitmapImage CreateTriangleBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
-        Triangle triangle = CreateTriangle(bitmap, color);
+        Triangle triangle = CreateTriangle(imgWidth, imgHeight, color);
         Coordinates point = triangle.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
@@ -26,10 +33,17 @@ public class ChaosTriangle : ChaosBase
     }
 
 
-    private static Triangle CreateTriangle(Bitmap bitmap, Color color)
+    /// <summary>
+    /// Calculates the three corner points of the triangle and the random starting point
+    /// </summary>
+    /// <param name="width">Widht of the bitmap where the fractal will be drawn</param>
+    /// <param name="height">Height of the bitmap where the fractal will be drawn</param>
+    /// <param name="color">Color for the random starting point</param>
+    /// <returns>A triangle with all its corner points and the random starting point</returns>
+    private static Triangle CreateTriangle(int width, int height, Color color)
     {
-        int bitmapWidth = bitmap.Width;
-        int bitmapHeight = bitmap.Height;
+        int bitmapWidth = width;
+        int bitmapHeight = height;
         int marginLeftRight = 100; // Spacing from left and right of the screen;
         int marginBottom = 100; // spacing from bottom
         int triangleLength = bitmapWidth - marginLeftRight * 2; // length of each side of the triangle

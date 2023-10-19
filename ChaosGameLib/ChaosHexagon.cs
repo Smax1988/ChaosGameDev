@@ -11,7 +11,7 @@ public class ChaosHexagon : ChaosBase
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
-        Hexagon hexaxon = CreateHexagon(bitmap, color);
+        Hexagon hexaxon = CreateHexagon(imgWidth, imgHeight, color);
         Coordinates point = hexaxon.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
@@ -29,10 +29,10 @@ public class ChaosHexagon : ChaosBase
         return CreateBitmapImage(bitmap);
     }
 
-    private static Hexagon CreateHexagon(Bitmap bitmap, Color color)
+    private static Hexagon CreateHexagon(int width, int height, Color color)
     {
-        int bitmapWidth = bitmap.Width;
-        int bitmapHeight = bitmap.Height;
+        int bitmapWidth = width;
+        int bitmapHeight = height;
         int centerLeftRight = bitmapWidth / 2; // Center of the bitmap horizontally
         int centerTopBottom = bitmapHeight / 2 - 50; // Center of the bitmap vertically
         int sideLength = 400;

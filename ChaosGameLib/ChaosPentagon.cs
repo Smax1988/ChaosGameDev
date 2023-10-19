@@ -11,7 +11,7 @@ public class ChaosPentagon : ChaosBase
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
-        Pentagon pentagon = CreatePentagon(bitmap, color);
+        Pentagon pentagon = CreatePentagon(imgWidth, imgHeight, color);
         Coordinates point = pentagon.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
@@ -29,10 +29,10 @@ public class ChaosPentagon : ChaosBase
         return CreateBitmapImage(bitmap);
     }
 
-    public static Pentagon CreatePentagon(Bitmap bitmap, Color color)
+    public static Pentagon CreatePentagon(int width, int height, Color color)
     {
-        int bitmapWidth = bitmap.Width;
-        int bitmapHeight = bitmap.Height;
+        int bitmapWidth = width;
+        int bitmapHeight = height;
         int centerLeftRight = bitmapWidth / 2; // Center of the bitmap horizontally
         int centerTopBottom = bitmapHeight / 2 - 50; // Center of the bitmap vertically
         int sideLength = 420;

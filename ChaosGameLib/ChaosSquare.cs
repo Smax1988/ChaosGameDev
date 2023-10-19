@@ -11,7 +11,7 @@ public class ChaosSquare : ChaosBase
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
-        Square square = CreateSquare(bitmap, color);
+        Square square = CreateSquare(imgWidth, imgHeight, color);
         Coordinates point = square.RandomStartingPoint;
 
         for (int i = 0; i < iterations; i++)
@@ -30,10 +30,10 @@ public class ChaosSquare : ChaosBase
     }
 
 
-    private static Square CreateSquare(Bitmap bitmap, Color color)
+    private static Square CreateSquare(int width, int height, Color color)
     {
-        int bitmapWidth = bitmap.Width;
-        int bitmapHeight = bitmap.Height;
+        int bitmapWidth = width;
+        int bitmapHeight = height;
         int marginLeftRight = 150; // Spacing from left and right of the screen;
         int marginBottom = 95; // spacing from bottom
         int sideLength = bitmapWidth - marginLeftRight * 2; // Spacing of 100 from left and right of the screen;
