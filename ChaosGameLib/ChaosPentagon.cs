@@ -7,6 +7,14 @@ namespace ChaosGameLib;
 
 public class ChaosPentagon : ChaosBase
 {
+    /// <summary>
+    /// Creates the fractal based on a pentagon as a BitmapImage
+    /// </summary>
+    /// <param name="iterations">Number of points added to the bitmap</param>
+    /// <param name="imgWidth">Widht of BitmapImage</param>
+    /// <param name="imgHeight">Height of BitmapImage</param>
+    /// <param name="color">Color of the points</param>
+    /// <returns>Fractal based on a pentagon as BitmapImage</returns>
     public static BitmapImage CreatePentagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
@@ -29,6 +37,13 @@ public class ChaosPentagon : ChaosBase
         return CreateBitmapImage(bitmap);
     }
 
+    /// <summary>
+    /// Calculates the five corner points of the pentagon and the random starting point
+    /// </summary>
+    /// <param name="width">Widht of the bitmap where the fractal will be drawn</param>
+    /// <param name="height">Height of the bitmap where the fractal will be drawn</param>
+    /// <param name="color">Color for the random starting point</param>
+    /// <returns>A pentagon with all its corner points and the random starting point</returns>
     public static Pentagon CreatePentagon(int width, int height, Color color)
     {
         int bitmapWidth = width;
