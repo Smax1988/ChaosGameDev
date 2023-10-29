@@ -5,6 +5,9 @@ using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
+/// <summary>
+/// Class provides functionality to create a pentagon fractal.
+/// </summary>
 public class ChaosPentagon : ChaosBase
 {
     /// <summary>

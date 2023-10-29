@@ -7,6 +7,9 @@ using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
+/// <summary>
+/// Base class that provides functionality that all deriving classes have in common.
+/// </summary>
 public abstract class ChaosBase
 {
     protected static readonly Random random = new Random();

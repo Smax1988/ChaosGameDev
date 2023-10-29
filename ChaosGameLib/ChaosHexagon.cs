@@ -5,6 +5,9 @@ using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
 
+/// <summary>
+/// Class provides functionality to create a hexagon fractal.
+/// </summary>
 public class ChaosHexagon : ChaosBase
 {
     /// <summary>

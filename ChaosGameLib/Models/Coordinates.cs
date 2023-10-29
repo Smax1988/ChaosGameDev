@@ -2,6 +2,9 @@
 
 namespace ChaosGameLib.Models;
 
+/// <summary>
+/// Contains x and y coordinates of a point and its color.
+/// </summary>
 public class Coordinates
 {
     public int X { get; set; }
@@ -10,12 +13,23 @@ public class Coordinates
 
     public Coordinates() {}
 
+    /// <summary>
+    /// Set x and y coordinates of a point.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public Coordinates(int x, int y)
     {
         X = x;
         Y = y;
     }
 
+    /// <summary>
+    /// Set x and y coordinates and the color of a point.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="color"></param>
     public Coordinates(int x, int y, Color color)
     {
         X = x;
