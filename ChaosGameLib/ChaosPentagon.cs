@@ -47,7 +47,7 @@ public class ChaosPentagon : ChaosBase
     /// <param name="height">Height of the bitmap where the fractal will be drawn</param>
     /// <param name="color">Color for the random starting point</param>
     /// <returns>A pentagon with all its corner points and the random starting point</returns>
-    public static Pentagon CreatePentagon(int width, int height, Color color)
+    private static Pentagon CreatePentagon(int width, int height, Color color)
     {
         int bitmapWidth = width;
         int bitmapHeight = height;
