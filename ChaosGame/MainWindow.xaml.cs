@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 namespace ChaosGame;
 
 /// <summary>
-/// Interaction logic for MainWindow.xaml
+/// Interaction logic for MainWindow.xaml TEST
 /// </summary>
 public partial class MainWindow : Window
 {
