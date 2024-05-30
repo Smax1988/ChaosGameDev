@@ -61,21 +61,15 @@ public abstract class ChaosBase
     }
 
     /// <summary>
-    /// Creates a BitmapImage from a bitmap using memory stream
+    /// Creates a MemoryStream from a bitmap with ImageFormat png
     /// </summary>
-    /// <param name="image">The bitmap that needs to be converted to a bitmap image</param>
-    /// <returns>The converted BitmapImage</returns>
-    protected static BitmapImage CreateBitmapImage(Bitmap image)
+    /// <param name="image">The bitmap that needs to be converted into a png MemoryStream</param>
+    /// <returns>The png MemoryStream</returns>
+    protected static MemoryStream CreateImageStream(Bitmap image)
     {
-        using MemoryStream memory = new MemoryStream();
-        image.Save(memory, ImageFormat.Bmp);
-        memory.Position = 0;
-        BitmapImage bitmapImage = new BitmapImage();
-        bitmapImage.BeginInit();
-        bitmapImage.StreamSource = memory;
-        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-        bitmapImage.EndInit();
-
-        return bitmapImage;
+        MemoryStream memoryStream = new MemoryStream();
+        image.Save(memoryStream, ImageFormat.Png);
+        memoryStream.Position = 0;
+        return memoryStream;
     }
 }

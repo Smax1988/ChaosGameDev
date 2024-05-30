@@ -1,6 +1,7 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
@@ -11,14 +12,14 @@ namespace ChaosGameLib;
 public class ChaosHexagon : ChaosBase
 {
     /// <summary>
-    /// Creates the fractal based on a hexagon as a BitmapImage
+    /// Creates the fractal based on a hexagon as a MemoryStream
     /// </summary>
     /// <param name="iterations">Number of points added to the bitmap</param>
     /// <param name="imgWidth">Widht of BitmapImage</param>
     /// <param name="imgHeight">Height of BitmapImage</param>
     /// <param name="color">Color of the points</param>
     /// <returns>Fractal based on a hexagon as BitmapImage</returns>
-    public static BitmapImage CreateHexagonBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static MemoryStream CreateHexagonMemoryStream(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Coordinates LastCornerPoint = new Coordinates();
@@ -37,7 +38,7 @@ public class ChaosHexagon : ChaosBase
                     AddPoint(bitmap, point);
             }
         }
-        return CreateBitmapImage(bitmap);
+        return CreateImageStream(bitmap);
     }
 
     /// <summary>

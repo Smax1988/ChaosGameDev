@@ -1,6 +1,7 @@
 ﻿using ChaosGameLib;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -29,7 +30,8 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosImage.Source = ChaosTriangle.CreateTriangleBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        using MemoryStream stream = ChaosTriangle.CreateTriangleMemoryStream(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        ChaosImage.Source = ConvertMemoryStreamToBitmapImage(stream);
     }
 
     private void Square_Click(object sender, RoutedEventArgs e)
@@ -37,7 +39,8 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosImage.Source = ChaosSquare.CreateSquareBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        using MemoryStream stream = ChaosSquare.CreateSquareMemoryStream(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        ChaosImage.Source = ConvertMemoryStreamToBitmapImage(stream);
     }
 
     private void Pentagon_Click(object sender, RoutedEventArgs e)
@@ -45,7 +48,8 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosImage.Source = ChaosPentagon.CreatePentagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        using MemoryStream stream = ChaosPentagon.CreatePentagonMemoryStream(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        ChaosImage.Source = ConvertMemoryStreamToBitmapImage(stream);
     }
 
     private void Hexagon_Click(object sender, RoutedEventArgs e)
@@ -53,7 +57,8 @@ public partial class MainWindow : Window
         var menuItem = (MenuItem)sender;
         string? iterations = menuItem.Tag as string;
 
-        ChaosImage.Source = ChaosHexagon.CreateHexagonBitmap(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        using MemoryStream stream = ChaosHexagon.CreateHexagonMemoryStream(int.Parse(iterations!), imgWidth, imgHeight, System.Drawing.Color.Cyan);
+        ChaosImage.Source = ConvertMemoryStreamToBitmapImage(stream);
     }
 
     // CHANGE COLOR
@@ -129,5 +134,15 @@ public partial class MainWindow : Window
             ScaleTransform newTransform = new ScaleTransform(scaleFactor, scaleFactor);
             ChaosImage.LayoutTransform = newTransform;
         }
+    }
+
+    private static BitmapImage ConvertMemoryStreamToBitmapImage(MemoryStream memoryStream)
+    {
+        BitmapImage bitmapImage = new BitmapImage();
+        bitmapImage.BeginInit();
+        bitmapImage.StreamSource = memoryStream;
+        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        bitmapImage.EndInit();
+        return bitmapImage;
     }
 }

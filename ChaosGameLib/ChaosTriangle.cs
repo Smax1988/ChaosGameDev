@@ -1,6 +1,7 @@
 ﻿using ChaosGameLib.Models;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace ChaosGameLib;
@@ -11,14 +12,14 @@ namespace ChaosGameLib;
 public class ChaosTriangle : ChaosBase
 {
     /// <summary>
-    /// Creates the fractal based on a triangle as a BitmapImage
+    /// Creates the fractal based on a triangle as a MemoryStream
     /// </summary>
     /// <param name="iterations">Number of points added to the bitmap</param>
     /// <param name="imgWidth">Widht of BitmapImage</param>
     /// <param name="imgHeight">Height of BitmapImage</param>
     /// <param name="color">Color of the points</param>
     /// <returns>Fractal based on a triangle as BitmapImage</returns>
-    public static BitmapImage CreateTriangleBitmap(int iterations, int imgWidth, int imgHeight, Color color)
+    public static MemoryStream CreateTriangleMemoryStream(int iterations, int imgWidth, int imgHeight, Color color)
     {
         Bitmap bitmap = new Bitmap(imgWidth, imgHeight);
         Triangle triangle = CreateTriangle(imgWidth, imgHeight, color);
@@ -32,7 +33,7 @@ public class ChaosTriangle : ChaosBase
             if (i > 100)
                 AddPoint(bitmap, point);
         }
-        return CreateBitmapImage(bitmap);
+        return CreateImageStream(bitmap);
     }
 
 
